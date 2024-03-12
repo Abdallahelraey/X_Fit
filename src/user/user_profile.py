@@ -1,4 +1,4 @@
-from src.user import User
+from src.user.user import User
 from src.opt_model.stabilization.stabilization_endurance import StabilizationEndurance
 
 class UserProfile(User):

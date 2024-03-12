@@ -1,5 +1,5 @@
 
-from user.user_profile import UserProfile
+from src.user.user_profile import UserProfile
 
 from src.modules.rule_based_model.rules import FitnessRules  
 
