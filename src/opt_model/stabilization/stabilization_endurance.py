@@ -41,7 +41,28 @@ class StabilizationEndurance(FitnessPhase):
         Define the specific training plan for the Stabilization phase.
         """
         print("Planning Stabilization phase...")
-        # Implement logic to define exercise selection, workout structure, and progression strategies
+        # Implement logic to define exercise selection, workout structure, and progression strategie
+        # Call all the functions to initialize parameters
+        self.flexibility()
+        self.core()
+        self.balance()
+        self.plyometric()
+        self.saq()
+        self.resistance()
+        # Define the structure of the training plan
+        training_plan = {
+            "Flexibility": self.flexibility_training_parameters,
+            "Core": self.core_training_parameters,
+            "Balance": self.balance_training_parameters,
+            "Plyometric": self.plyometric_training_parameters,
+            "SAQ": self.saq_training_parameters,
+            "Resistance": self.resistance_training_parameters
+        }
+        
+        # Display the training parameters for each phase
+        for phase, parameters in training_plan.items():
+            print(f"\n{phase} Training Plan:")
+            self.display_training_parameters(parameters)
 
     def set_parameters(self, training, params: TrainingParameters):
         """

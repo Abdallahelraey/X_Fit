@@ -1,5 +1,6 @@
 from src.user.user_profile import UserProfile
-from src.modules.rule_based_model.rules import FitnessRules
+from src.models.rule_based_model.rules import FitnessRules
+
 
 class Assessment:
     def __init__(self, user_profile):
@@ -36,11 +37,6 @@ class Assessment:
                 return 447.593 + (9.247 * self.user_profile.weight) + (3.098 * self.user_profile.height) - (4.330 * self.user_profile.age)
         else:
             return None
-
-
-
-
-
 
 
     def _bmi_calculation(self):
@@ -190,5 +186,57 @@ class Assessment:
             # Add any error handling or logging as needed
 
 
+    def get_recommended_assessment_phases(self):
+        recommended_phases = []
+
+        if self.fitness_level in ["Overweight", "Obese"]:
+            recommended_phases.extend(["Strength Assessment", "Endurance Assessment", "Power Assessment"])
+
+        if "Weight Loss" in self.goals or "Body Composition Improvement" in self.goals:
+            recommended_phases.extend(["Strength Assessment", "Endurance Assessment", "Power Assessment"])
+
+        if "Flexibility Improvement" in self.goals:
+            recommended_phases.append("Flexibility Assessment")
+
+        if "Core Strength" in self.goals or "Functional Strength" in self.goals:
+            recommended_phases.append("Stabilization Assessment")
+
+        if "Sports Performance Enhancement" in self.goals:
+            recommended_phases.extend(["Power Assessment", "Endurance Assessment"])
+
+        if "Injury Prevention" in self.goals:
+            recommended_phases.extend(["Flexibility Assessment", "Stabilization Assessment"])
+
+        if "Stress Reduction" in self.goals:
+            recommended_phases.extend(["Endurance Assessment", "Flexibility Assessment"])
+
+        return recommended_phases
+
+
+    def recommend_fitness_phase(self,assessment_manager):
+        # Generate and print the assessment report
+        assessment_manager.generate_report()
+
+        # Define criteria for each fitness phase
+        phases_criteria = {
+            "Strength": assessment_manager.get_score_for_phase("StrengthAssessment") >= 15,
+            "Endurance": assessment_manager.get_score_for_phase("EnduranceAssessment") >= 5,
+            "Flexibility": assessment_manager.get_score_for_phase("FlexibilityAssessment") >= 150,
+            "Power": assessment_manager.get_score_for_phase("PowerAssessment") >= 35,
+            "Stabilization": assessment_manager.get_score_for_phase("StabilizationAssessment") >= 140
+        }
+
+        # Determine the phases that meet the criteria
+        recommended_phases = [phase for phase, criteria_met in phases_criteria.items() if criteria_met]
+
+        return recommended_phases
+
+
+
+
+    def _get_exercises(self, workout_type, goals):
+        # Implement logic to retrieve exercises based on workout type and goals
+        # You can use a database or a predefined library of exercises
+        return ["Exercise 1", "Exercise 2", "Exercise 3"]
 
 

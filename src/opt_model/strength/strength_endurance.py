@@ -9,27 +9,27 @@ class StrengthEndurance(FitnessPhase):
         self.intensity = "Moderate" # Adjust based on the intended overall intensity level
 
     def flexibility(self):
-        # Define specific flexibility training plan for Stabilization Endurance phase
+        # Define specific flexibility training plan for Strength Endurance phase
         self.flexibility_training_parameters = TrainingParameters(muscle_groups="Specific", reps=(5, 10), sets=(1, 2), tempo="1–2 s hold", intensity="Low", load="Light", rest=(0, 0), schedule="Fixed", frequency=(3, 7), volume="Low", split="Full Body", duration=(self.duration), exercise_selection="SMR and active*")
 
     def core(self):
-        # Define specific core training plan for Stabilization Endurance phase
+        # Define specific core training plan for Strength Endurance phase
         self.core_training_parameters = TrainingParameters(muscle_groups="General", reps=(8, 12), sets=(2, 3), tempo="Medium", intensity="Moderate", load="Moderate", rest=(0, 60), schedule="Flexible", frequency=(2, 4), volume=None, split="Full Body", duration=(self.duration), exercise_selection="1–3 core-strength")
 
     def balance(self):
-        # Define specific balance training plan for Stabilization Endurance phase
+        # Define specific balance training plan for Strength Endurance phase
         self.balance_training_parameters = TrainingParameters(muscle_groups="General", reps=(8, 12), sets=(2, 3), tempo="Medium", intensity="Moderate", load="Moderate", rest=(0, 60), schedule="Flexible", frequency=(2, 4), volume=None, split="Full Body", duration=(self.duration), exercise_selection="1–3 balance-strength")
 
     def plyometric(self):
-        # Define specific plyometric training plan for Stabilization Endurance phase (likely minimal or absent)
+        # Define specific plyometric training plan for Strength Endurancee phase (likely minimal or absent)
         self.plyometric_training_parameters = TrainingParameters(muscle_groups="General", reps=(8, 10), sets=(2, 3), tempo="Repeating", intensity="Moderate", load="Moderate", rest=(0, 60), schedule="Flexible", frequency=(2, 4), volume=None, split="Full Body", duration=(self.duration), exercise_selection="1–3 plyometric-strength")
 
     def saq(self):
-        # Define specific SAQ training plan for Stabilization Endurance phase (likely minimal or absent)
+        # Define specific SAQ training plan for Strength Endurancee phase (likely minimal or absent)
          self.saq_training_parameters = TrainingParameters(muscle_groups="General", reps=(3, 5), sets=(3, 4), tempo="Fast", intensity="Moderate", load="Moderate", rest=(0, 60), schedule="Flexible", frequency=(2, 4), volume=None, split="Full Body", duration=(self.duration), exercise_selection="6–8 drills allowing greater horizontal inertia but limited unpredictability")
 
     def resistance(self):
-        # Define specific resistance training plan for Stabilization Endurance phase, focusing on low weight, high reps
+        # Define specific resistance training plan for Strength Endurance phase, focusing on low weight, high reps
        self.resistance_training_parameters = TrainingParameters(muscle_groups="General", reps=(8, 12), sets=(2, 4), tempo="(Str) 2/0/2 (Stab) 4/2/1", intensity="70–80%", load="Moderate", rest=(0, 60), schedule="Flexible", frequency=(2, 4), volume=None, split="Full Body", duration=(self.duration), exercise_selection="1 strength superset with 1 stabilization")
 
     def display_training_parameters(self, training_parameters):
@@ -38,10 +38,32 @@ class StrengthEndurance(FitnessPhase):
 
     def plan(self):
         """
-        Define the specific training plan for the Stabilization phase.
+        Define the specific training plan for the Strength Endurance phase.
         """
-        print("Planning Stabilization phase...")
-        # Implement logic to define exercise selection, workout structure, and progression strategies
+        print("Planning Strength Endurance phase...")
+        # Implement logic to define exercise selection, workout structure, and progression strategie
+        # Call all the functions to initialize parameters
+        self.flexibility()
+        self.core()
+        self.balance()
+        self.plyometric()
+        self.saq()
+        self.resistance()
+        # Define the structure of the training plan
+        training_plan = {
+            "Flexibility": self.flexibility_training_parameters,
+            "Core": self.core_training_parameters,
+            "Balance": self.balance_training_parameters,
+            "Plyometric": self.plyometric_training_parameters,
+            "SAQ": self.saq_training_parameters,
+            "Resistance": self.resistance_training_parameters
+        }
+        
+        # Display the training parameters for each phase
+        for phase, parameters in training_plan.items():
+            print(f"\n{phase} Training Plan:")
+            self.display_training_parameters(parameters)
+
 
     def set_parameters(self, params: TrainingParameters):
         """

@@ -6,7 +6,7 @@ from pymongo import MongoClient
 import pandas as pd
 
 # MongoDB connection details
-MONGO_URI = "mongodb+srv://<username>:<password>@<cluster>.mongodb.net/<database>?retryWrites=true&w=majority"
+MONGO_URI = "mongodb+srv://graduationproject993:Graduation2024@graduationproject.xkmscj5.mongodb.net/xfit?retryWrites=true&w=majority"
 DATABASE_NAME = "your_database_name"
 COLLECTION_NAME = "your_collection_name"
 
