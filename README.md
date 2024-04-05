@@ -1,4 +1,5 @@
 # X_Fit: Empowering fitness with AI.
+![X-Fit](https://github.com/Abdallahelraey/X_Fit/assets/101267806/b3bdb552-5f73-4635-8b0e-a61846df6c0f)
 
 ### Introduction
 X_Fit is a Python-based fitness application designed to guide users towards their fitness goals.
